@@ -87,9 +87,18 @@ if not uploaded:
 
 try:
     raw_df = pd.read_csv(uploaded, sep=";")
+    # if semicolon produced only 1 column the file is likely comma-delimited
+    if len(raw_df.columns) == 1:
+        uploaded.seek(0)
+        raw_df = pd.read_csv(uploaded, sep=",")
+        detected_sep = ","
+    else:
+        detected_sep = ";"
 except Exception as e:
     st.error(f"Could not parse file: {e}")
     st.stop()
+
+st.caption(f"Detected delimiter: `{'semicolon' if detected_sep == ';' else 'comma'}`")
 
 st.subheader("Preview (first 5 rows)")
 st.dataframe(raw_df.head(), use_container_width=True)
