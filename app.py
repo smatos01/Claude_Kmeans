@@ -19,6 +19,31 @@ st.markdown("""
 <style>
   .stApp { background-color: #0f1117; color: #e0e0e0; }
   .block-container { padding-top: 2rem; }
+
+  /* force all common text elements to light colour */
+  .stApp, .stApp p, .stApp span, .stApp div,
+  .stApp label, .stApp li, .stApp td, .stApp th,
+  .stApp .stMarkdown, .stApp .stText,
+  [data-testid="stText"], [data-testid="stMarkdownContainer"],
+  [data-testid="stWidgetLabel"] > div,
+  .stCheckbox label, .stSelectbox label,
+  .stNumberInput label, .stFileUploader label,
+  .stCaption, .stCaption p,
+  .row-widget.stRadio > label { color: #e0e0e0 !important; }
+
+  h1, h2, h3, h4, h5, h6 { color: #f0f0f0 !important; }
+
+  /* dataframe / table text */
+  .stDataFrame, .stDataFrame td, .stDataFrame th,
+  [data-testid="stDataFrame"] td,
+  [data-testid="stDataFrame"] th { color: #e0e0e0 !important; }
+
+  /* inline HTML tables produced by to_html() */
+  table { color: #e0e0e0 !important; border-collapse: collapse; width: 100%; }
+  th { background: #1e2130 !important; color: #f0f0f0 !important; padding: 6px 10px; text-align: left; }
+  td { padding: 5px 10px; border-bottom: 1px solid #2d3147; }
+  tr:nth-child(even) td { background: #151821; }
+
   .metric-card {
     background: #1a1d27;
     border-radius: 8px;
@@ -38,8 +63,7 @@ st.markdown("""
   .chip-over  { background:#1a3a1a; color:#4ade80; border-radius:4px; padding:2px 8px; font-weight:600; }
   .chip-under { background:#3a1a1a; color:#f87171; border-radius:4px; padding:2px 8px; font-weight:600; }
   .chip-par   { background:#1e2130; color:#9ca3af; border-radius:4px; padding:2px 8px; font-weight:600; }
-  h1, h2, h3 { color: #f0f0f0; }
-  .stDataFrame { background: #1a1d27; }
+
   div[data-testid="stExpander"] { background: #1a1d27; border: 1px solid #2d3147; border-radius: 8px; }
 </style>
 """, unsafe_allow_html=True)
